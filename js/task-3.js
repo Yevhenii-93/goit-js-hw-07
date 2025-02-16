@@ -6,3 +6,17 @@
 // Під час набору тексту в інпуті його поточне значення підставляється в span#name-output як ім’я для привітання
 // Значення в інпуті очищене від пробілів по краях
 // Якщо інпут порожній або містить лише пробіли, то замість імені у спан має підставлятися рядок "Anonymous"
+
+const inputName = document.querySelector('#name-input');
+const userName = document.querySelector('#name-output');
+inputName.addEventListener('input', enterName);
+
+function enterName(event) {
+  const input = event.currentTarget;
+
+  userName.textContent =
+    input.value.trim().slice(0, 1).toUpperCase() + input.value.slice(1).trim();
+  if (input.value.trim() === '') {
+    userName.textContent = 'Anonymous';
+  }
+}
