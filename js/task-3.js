@@ -16,7 +16,13 @@ function enterName(event) {
 
   userName.textContent =
     input.value.trim().slice(0, 1).toUpperCase() + input.value.slice(1).trim();
+
   if (input.value.trim() === '') {
     userName.textContent = 'Anonymous';
+  } else if (input.value.trim().includes(' ')) {
+    userName.textContent = userName.textContent
+      .split(' ')
+      .map(word => word.slice(0, 1).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 }
